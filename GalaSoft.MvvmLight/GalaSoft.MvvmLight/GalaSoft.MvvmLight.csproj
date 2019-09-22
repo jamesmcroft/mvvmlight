@@ -1,0 +1,68 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.4;netstandard2.0;xamarin.ios10;monoandroid90;uap10.0;net45</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Product>Custom GalaSoft MVVM Light libraries</Product>
+    <Description>The MVVM Light Toolkit is a set of components helping people to get started in the Model-View-ViewModel pattern in WPF, UWP, Xamarin.Android, Xamarin.iOS, and Xamarin.Forms. It is a light and pragmatic framework that allows you to pick which components you want to use. This version contains only the libraries and doesn't add any scaffolding to your application!</Description>
+    <Copyright>Copyright 2009-2018 Laurent Bugnion (GalaSoft)</Copyright>
+    <PackageLicenseUrl>https://github.com/jamesmcroft/mvvmlight/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jamesmcroft/mvvmlight/</PackageProjectUrl>
+    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
+    <PackageTags>MADE App Development GalaSoft MVVM MvvmLight WPF Windows Android iOS Xamarin</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>MADE.App.MvvmLightLibs</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.4\GalaSoft.MvvmLight.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
+    <AndroidUseIntermediateDesignerFile>False</AndroidUseIntermediateDesignerFile>
+    <AndroidUseManagedDesignTimeResourceGenerator>False</AndroidUseManagedDesignTimeResourceGenerator>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" Version="27.0.2.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\NET45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+
+</Project>
