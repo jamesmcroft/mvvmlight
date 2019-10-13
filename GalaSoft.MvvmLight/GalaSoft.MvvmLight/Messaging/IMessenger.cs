@@ -25,6 +25,33 @@ namespace GalaSoft.MvvmLight.Messaging
     public interface IMessenger
     {
         /// <summary>
+        /// Checks whether a particular message is registered with the given recipient.
+        /// </summary>
+        /// <param name="recipient">The recipient that will receive the messages.</param>
+        /// <typeparam name="TMessage">The type of message that the recipient registers for.</typeparam>
+        /// <returns>
+        /// True if the message is currently registered; otherwise, false.
+        /// </returns>
+        bool IsRegistered<TMessage>(object recipient);
+
+        /// <summary>
+        /// Checks whether a particular message is registered with the given recipient.
+        /// </summary>
+        /// <param name="recipient">
+        /// The recipient that will receive the messages.
+        /// </param>
+        /// <param name="receiveDerivedMessagesToo">
+        /// If true, message types deriving from TMessage will also be transmitted to the recipient.
+        /// </param>
+        /// <typeparam name="TMessage">
+        /// The type of message that the recipient registers for.
+        /// </typeparam>
+        /// <returns>
+        /// True if the message is currently registered; otherwise, false.
+        /// </returns>
+        bool IsRegistered<TMessage>(object recipient, bool receiveDerivedMessagesToo);
+
+        /// <summary>
         /// Registers a recipient for a type of message TMessage. The action
         /// parameter will be executed when a corresponding message is sent.
         /// <para>Registering a recipient does not create a hard reference to it,

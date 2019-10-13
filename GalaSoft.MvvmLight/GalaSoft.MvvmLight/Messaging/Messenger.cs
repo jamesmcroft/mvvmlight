@@ -93,6 +93,75 @@ namespace GalaSoft.MvvmLight.Messaging
         #region IMessenger Members
 
         /// <summary>
+        /// Checks whether a particular message is registered with the given recipient.
+        /// </summary>
+        /// <param name="recipient">The recipient that will receive the messages.</param>
+        /// <typeparam name="TMessage">The type of message that the recipient registers for.</typeparam>
+        /// <returns>
+        /// True if the message is currently registered; otherwise, false.
+        /// </returns>
+        public bool IsRegistered<TMessage>(object recipient)
+        {
+            return this.IsRegistered<TMessage>(recipient, false);
+        }
+
+        /// <summary>
+        /// Checks whether a particular message is registered with the given recipient.
+        /// </summary>
+        /// <param name="recipient">
+        /// The recipient that will receive the messages.
+        /// </param>
+        /// <param name="receiveDerivedMessagesToo">
+        /// If true, message types deriving from TMessage will also be transmitted to the recipient.
+        /// </param>
+        /// <typeparam name="TMessage">
+        /// The type of message that the recipient registers for.
+        /// </typeparam>
+        /// <returns>
+        /// True if the message is currently registered; otherwise, false.
+        /// </returns>
+        public bool IsRegistered<TMessage>(object recipient, bool receiveDerivedMessagesToo)
+        {
+            Type messageType = typeof(TMessage);
+
+            Dictionary<Type, List<WeakActionAndToken>> recipients;
+
+            if (receiveDerivedMessagesToo)
+            {
+                if (this.recipientsOfSubclassesAction == null)
+                {
+                    this.recipientsOfSubclassesAction = new Dictionary<Type, List<WeakActionAndToken>>();
+                }
+
+                recipients = this.recipientsOfSubclassesAction;
+            }
+            else
+            {
+                if (this.recipientsStrictAction == null)
+                {
+                    this.recipientsStrictAction = new Dictionary<Type, List<WeakActionAndToken>>();
+                }
+
+                recipients = this.recipientsStrictAction;
+            }
+
+            lock (recipients)
+            {
+                List<WeakActionAndToken> list = new List<WeakActionAndToken>();
+
+                if (recipients.ContainsKey(messageType))
+                {
+                    list = recipients[messageType];
+                }
+
+                WeakActionAndToken registeredRecipient = list.FirstOrDefault(item => item.Action.IsAlive && item.Action.Target.Equals(recipient));
+
+                // If a WeakActionAndToken for the recipient and the action is alive, it's registered.
+                return !registeredRecipient.Equals(default(WeakActionAndToken));
+            }
+        }
+
+        /// <summary>
         /// Registers a recipient for a type of message TMessage. The action
         /// parameter will be executed when a corresponding message is sent.
         /// <para>Registering a recipient does not create a hard reference to it,
