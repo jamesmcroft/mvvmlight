@@ -1,23 +1,13 @@
-# MVVM Light Toolkit
+# MADE Apps MVVM Light Toolkit .NET Standard port
 
-The main purpose of the toolkit is to accelerate the creation and development of MVVM applications in Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Windows 10 UWP, Windows Presentation Foundation (WPF), Silverlight, Windows Phone.
+This is a .NET Standard multi-targeted port of the GalaSoft MVVM Light Toolkit, used to accelerate the creation and development of MVVM applications in Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Windows 10 UWP, and Windows Presentation Foundation (WPF).
 
-## Get started
+## Build status
 
-More information about the MVVM Light Toolkit can be found on http://www.mvvmlight.net.
-
-Documentation: See http://www.mvvmlight.net/doc
-
-## Nuget versions
-
-| [MvvmLightLibs](https://www.nuget.org/packages/MvvmLightLibs/)  | [MvvmLight](https://www.nuget.org/packages/MvvmLight/) | [MvvmLightAndroidSupport](https://www.nuget.org/packages/MvvmLightAndroidSupport/) | [MvvmLightLibsStd10](https://www.nuget.org/packages/MvvmLightLibsStd10/) | [MvvmLightStd10](https://www.nuget.org/packages/MvvmLightStd10/)
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-
-## VSIX packages for Visual Studio
-
-| [VS2012](https://marketplace.visualstudio.com/items?itemName=LaurentBugnion.MVVMLightforVS2012)  | [VS2013](https://marketplace.visualstudio.com/items?itemName=LaurentBugnion.MVVMLightforVS2013) | [VS2015](https://marketplace.visualstudio.com/items?itemName=LaurentBugnion.MVVMLightforVS2015) | [VS2017](https://marketplace.visualstudio.com/items?itemName=LaurentBugnion.MVVMLightforVS2017) |
-| ------------- | ------------- | ------------- | ------------- |
+| Packages | Status | Current | Preview |
+| ------ | ------ | ------ | ------ |
+| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/GitHub/_apis/build/status/MvvmLight.NetStandard.CI)](https://dev.azure.com/jamesmcroft/GitHub/_build/latest?definitionId=31) | [![Nuget](https://img.shields.io/nuget/v/MADE.App.MvvmLightLibs.svg)](https://www.nuget.org/packages/MADE.App.MvvmLightLibs/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.MvvmLightLibs.svg)](https://www.nuget.org/packages/MADE.App.MvvmLightLibs/) |
 
 ## License
 
-Under [MIT License](http://www.galasoft.ch/license_MIT.txt).
+MVVM Light Toolkit's source code is made available under the terms and conditions of the [MIT license](LICENSE).
